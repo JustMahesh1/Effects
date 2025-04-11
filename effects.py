@@ -33,7 +33,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 st.markdown(
     """
     <footer>
-        <p>&copy; 2025 U Mahesh.</p>
+        <p style="position:absolute">&copy; 2025 U Mahesh.</p>
     </footer>
     """,
     unsafe_allow_html=True,
