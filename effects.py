@@ -6,7 +6,7 @@ from PIL import Image, ImageEnhance, ImageDraw, ImageFont
 from scipy.interpolate import UnivariateSpline
 
 # setting app's title, icon & layout
-st.set_page_config(page_title="Image Enhancer", page_icon="M")
+st.set_page_config(page_title="Color Revive - Effects", page_icon="M")
 
 # css style to hide footer, header and main menu details
 hide_st_style = """
@@ -150,8 +150,8 @@ def generate_meme(image, top_text, bottom_text, font_size=40):
     return img
 
 def main():
-    st.header("Image Enhancer")
-    st.text("Build with Streamlit and OpenCV")
+    st.header("Color Revive - Effects")
+    st.text("Blend moods into your images")
     
     image_file = st.file_uploader("Upload Image", type=["jpg", "png", "jpeg"])
     
@@ -179,47 +179,47 @@ def main():
         our_image = adjust_image_size(our_image)  # Resize for consistent display
         
         st.text("Original Image")
-        st.image(our_image, use_column_width=True)
+        st.image(our_image, use_container_width=True)
         
         if enhance_type == "Gray Scale":
             st.text("Filtered Image")
             gray_img = our_image.convert("L")
-            st.image(gray_img, use_column_width=True)
+            st.image(gray_img, use_container_width=True)
             
         elif enhance_type == "Pencil Effect":
             st.text("Filtered Image")
             sketch_img = sketch(our_image)
-            st.image(sketch_img, use_column_width=True)
+            st.image(sketch_img, use_container_width=True)
             
         elif enhance_type == "Sepia Effect":
             st.text("Filtered Image")
             sepia_img = sepia_effect(our_image)
-            st.image(sepia_img, use_column_width=True)
+            st.image(sepia_img, use_container_width=True)
             
         elif enhance_type == "Sharp Effect":
             st.text("Filtered Image")
             sharp_img = sharpen_image(our_image)
-            st.image(sharp_img, use_column_width=True)
+            st.image(sharp_img, use_container_width=True)
             
         elif enhance_type == "Invert Effect":
             st.text("Filtered Image")
             invert_img = invert_image(our_image)
-            st.image(invert_img, use_column_width=True)
+            st.image(invert_img, use_container_width=True)
             
         elif enhance_type == "Summer Effect":
             st.text("Filtered Image")
             summer_img = summer_effect(our_image)
-            st.image(summer_img, use_column_width=True)
+            st.image(summer_img, use_container_width=True)
             
         elif enhance_type == "Winter Effect":
             st.text("Filtered Image")
             winter_img = winter_effect(our_image)
-            st.image(winter_img, use_column_width=True)
+            st.image(winter_img, use_container_width=True)
             
         elif enhance_type == "Background Remover":
             st.text("Filtered Image")
             bg_removed = remove(our_image)
-            st.image(bg_removed, use_column_width=True)
+            st.image(bg_removed, use_container_width=True)
             
         elif enhance_type == "Custom Background":
             st.text("Upload a background image")
@@ -229,26 +229,26 @@ def main():
                 bg_image = Image.open(bg_file)
                 bg_image = adjust_image_size(bg_image)
                 st.text("Background Image")
-                st.image(bg_image, use_column_width=True)
+                st.image(bg_image, use_container_width=True)
                 
                 foreground = remove(our_image)
                 result_img = add_custom_background(foreground, bg_image)
                 st.text("Result with Custom Background")
-                st.image(result_img, use_column_width=True)
+                st.image(result_img, use_container_width=True)
                 
         elif enhance_type == "Contrast":
             st.text("Filtered Image")
             c_rate = st.sidebar.slider("Contrast", 0.5, 3.5, 1.0)
             enhancer = ImageEnhance.Contrast(our_image)
             img_output = enhancer.enhance(c_rate)
-            st.image(img_output, use_column_width=True)
+            st.image(img_output, use_container_width=True)
             
         elif enhance_type == "Brightness":
             st.text("Filtered Image")
             b_rate = st.sidebar.slider("Brightness", 0.5, 3.5, 1.0)
             enhancer = ImageEnhance.Brightness(our_image)
             img_output = enhancer.enhance(b_rate)
-            st.image(img_output, use_column_width=True)
+            st.image(img_output, use_container_width=True)
             
         elif enhance_type == "Blurring":
             st.text("Filtered Image")
@@ -257,7 +257,7 @@ def main():
             img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
             blur_img = cv2.GaussianBlur(img, (25, 25), blur_rate)
             blur_img = cv2.cvtColor(blur_img, cv2.COLOR_BGR2RGB)
-            st.image(blur_img, use_column_width=True)
+            st.image(blur_img, use_container_width=True)
             
         elif enhance_type == "Meme Generator":
             st.text("Create a Meme")
@@ -272,7 +272,7 @@ def main():
             
             if top_text or bottom_text:
                 meme_img = generate_meme(our_image, top_text, bottom_text, font_size)
-                st.image(meme_img, use_column_width=True)
+                st.image(meme_img, use_container_width=True)
 
 if __name__ == "__main__":
     main()
