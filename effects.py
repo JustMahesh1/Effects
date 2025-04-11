@@ -32,16 +32,6 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 # Add a custom footer with the copyright message
 st.markdown(
     """
-    <style>
-    footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1em 0;
-        text-align: center;
-        width: 100%;
-    }
-    </style>
     <footer>
         <p>&copy; 2025 U Mahesh.</p>
     </footer>
