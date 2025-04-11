@@ -32,12 +32,23 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 # Add a custom footer with the copyright message
 st.markdown(
     """
-    <footer style="text-align: center; padding: 1em 0;">
+    <style>
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1em 0;
+        text-align: center;
+        width: 100%;
+    }
+    </style>
+    <footer>
         <p>&copy; 2025 U Mahesh.</p>
     </footer>
     """,
     unsafe_allow_html=True,
 )
+
 
 def adjust_image_size(image, max_width=600):
     """Resize image maintaining aspect ratio"""
